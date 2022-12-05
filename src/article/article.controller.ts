@@ -10,7 +10,6 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { DeleteResult } from 'typeorm';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/createArticle.dto';
 import { ArticleResponseInterface } from './types/articleResponse.interface';

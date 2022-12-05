@@ -1,7 +1,7 @@
 import { UserEntity } from '@app/user/user.entity';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { ArticleEntity } from './article.entity';
 import { CreateArticleDto } from './dto/createArticle.dto';
 import { ArticleResponseInterface } from './types/articleResponse.interface';
@@ -30,7 +30,10 @@ export class ArticleService {
     return await this.articleRepository.save(article);
   }
 
-  async deleteArticle(currentUserId: number, slug: string) {
+  async deleteArticle(
+    currentUserId: number,
+    slug: string,
+  ): Promise<DeleteResult> {
     const article = await this.findBySlug(slug);
 
     if (!article) {
